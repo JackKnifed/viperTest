@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/spf13/viper"
 	"flag"
+	"strings"
 )
 
 func main() {
@@ -22,5 +23,9 @@ func main() {
     panic(fmt.Errorf("Fatal unmarshaling config: %s \n", err))
   }
 
-  fmt.Printf("%#v")
+  fmt.Printf("%#v\n", parsedConfig)
+
+  fmt.Println(strings.Join(viper.AllKeys(), "\n"))
+
+  viper.Debug()
 }
